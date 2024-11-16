@@ -11,9 +11,9 @@ export function fetchTodos() {
 
 export function addTodo(todo) {
   return function(dispatch) {
-    return axios(
+    return axios.post(
       "http://localhost:9091/api/todo", todo).then(({ data }) => {
-        dispatch(appendTodo(data.todo));
+        dispatch(appendTodo(data));
       }); 
   };  
 
