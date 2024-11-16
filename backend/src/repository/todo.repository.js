@@ -1,12 +1,13 @@
-
 let todoList = {
   todos: [
     {
-      "task": "This is a todo example"
+      task: "This is a todo example"
     }
   ]
 };
 
-module.exports = {
-  getTodos: () => Promise.resolve(todoList)
-};
+const getTodos = async () => {
+  return todoList
+}
+
+module.exports = { getTodos};
