@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Todo from "./Todo";
-import {fetchTodos} from "../actions";
-import {connect} from "react-redux";
+import { fetchTodos } from "../actions/todoActions";
+import { connect } from "react-redux";
 
 class TodoList extends Component {
   state = {};

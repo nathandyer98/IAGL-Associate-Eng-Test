@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_TODOS } from "./types";
+import { FETCH_TODOS } from "./types/todoTypes";
 
 export function fetchTodos() {
   return function(dispatch) {
