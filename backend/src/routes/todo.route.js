@@ -5,7 +5,13 @@ const todoService = require('./service/todo.service')(repository);
 const router = express.Router();
 
 router.get('/api/todo', async (req, res) => {
-    res.json(await todoService.getTodos());
+    try {
+        const todos = await todoService.getTodos();
+        res.status(200).json(todos);
+    } catch (error) {
+        console.error("Error fetching todos", error);
+        res.status(500).json({ error: "Error fetching todos" });
+    }
   });
 
   /**
