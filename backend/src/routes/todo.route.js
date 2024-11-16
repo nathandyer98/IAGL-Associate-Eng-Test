@@ -4,7 +4,7 @@ const todoService = require('./service/todo.service')(repository);
 
 const router = express.Router();
 
-router.get('/api/todo', async (req, res) => {
+router.get('/todo', async (req, res) => {
     try {
         const todos = await todoService.getTodos();
         res.status(200).json(todos);
