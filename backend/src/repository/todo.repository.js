@@ -15,4 +15,4 @@ const addTodo = async (todo) => {
   return todo;
 }
 
-module.exports = { getTodos};
+module.exports = { getTodos, addTodo };
