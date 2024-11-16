@@ -14,19 +14,19 @@ router.get('/todo', async (req, res) => {
     }
   });
 
-  /**
-  POST /api/todo
-  {
-   "task": "Some API"
-  }
+router.post('/todo', async (req, res) => {
+    try {
+        const {task} = req.body;
+        if(!task) {
+            return res.status(400).json({ error: "Task is required" });
+        }
+        const newTodo = await todoService.addToDo(task);
+        res.status(201).json(newTodo);
 
-   {
-    "todos": [
-      {
-        "task": "Some API"
-      }
-    ]
-   }
-  **/
+    } catch (error) {
+        console.error("Error adding todo", error);
+        res.status(500).json({ error: "Failed adding todo" });
+    }
+  });
 
 module.exports = router;
