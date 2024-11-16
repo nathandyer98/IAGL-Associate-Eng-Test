@@ -11,9 +11,12 @@ const TodoList = ({ todos, fetchTodos }) => {
   return (
     <ul className="todo-list">
       {todos && todos.length
-        ? todos.map((todo, index) => (
-            <Todo key={`todo-${index}`} todo={todo.task} />
-          ))
+        ? todos
+            .slice()
+            .reverse()
+            .map((todo, index) => (
+              <Todo key={`todo-${index}`} todo={todo.task} />
+            ))
         : "No todos, yay!"}
     </ul>
   );
