@@ -2,7 +2,9 @@ const express = require('express');
 const repository = require('./repository/todo.repository');
 const todoService = require('./service/todo.service')(repository);
 
-server.get('/api/todo', async (req, res) => {
+const router = express.Router();
+
+router.get('/api/todo', async (req, res) => {
     res.json(await todoService.getTodos());
   });
 
@@ -20,3 +22,5 @@ server.get('/api/todo', async (req, res) => {
     ]
    }
   **/
+
+module.exports = router;
