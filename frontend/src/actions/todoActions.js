@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_TODOS } from "./types/todoTypes";
+import { FETCH_TODOS, ADD_TODO } from "./types/todoTypes";
 
 export function fetchTodos() {
   return function(dispatch) {
@@ -9,9 +9,26 @@ export function fetchTodos() {
   };
 }
 
+export function addTodo(todo) {
+  return function(dispatch) {
+    return axios(
+      "http://localhost:9091/api/todo", todo).then(({ data }) => {
+        dispatch(appendTodo(data.todo));
+      }); 
+  };  
+
+  }
+
 function setTodos(data) {
   return {
     type: FETCH_TODOS,
     payload: data
+  };
+}
+
+function appendTodo(todo) {
+  return {
+    type: ADD_TODO,
+    payload: todo
   };
 }
