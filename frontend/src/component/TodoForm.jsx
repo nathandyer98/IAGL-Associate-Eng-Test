@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addTodo } from "../actions/todoActions";
+import { addTodo, fetchTodos } from "../actions/todoActions";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ addTodo, fetchTodos }) => {
   const [newTodo, setNewTodo] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +12,7 @@ const TodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTodo.trim()) {
-      addTodo({ task: newTodo });
+      addTodo({ task: newTodo }).then(() => fetchTodos());
       setNewTodo("");
     }
   };
@@ -30,4 +30,4 @@ const TodoForm = ({ addTodo }) => {
   );
 };
 
-export default connect(null, { addTodo })(TodoForm);
+export default connect(null, { addTodo, fetchTodos })(TodoForm);
